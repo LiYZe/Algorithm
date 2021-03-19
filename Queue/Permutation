@@ -1,0 +1,28 @@
+import edu.princeton.cs.algs4.StdIn;
+import java.util.Iterator;
+
+public class Permutation {
+    private RandomizedQueue<String> queue;
+
+    public Permutation(){
+        queue =new RandomizedQueue<>();
+    }
+    private void getRandom(int k){
+        while(!StdIn.isEmpty()){
+            String str = StdIn.readString();
+            queue.enqueue(str);
+        }
+        Iterator<String> it = queue.iterator();
+        for (int i = 0; i < k; i++) {
+            System.out.println(it.next());
+        }
+    }
+    public static void main(String[] args) {
+        if(args.length != 1){
+            throw new IllegalArgumentException();
+        }
+        Permutation per = new Permutation();
+        int n = Integer.parseInt(args[0]);
+        per.getRandom(n);
+    }
+}
